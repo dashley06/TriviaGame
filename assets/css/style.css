@@ -1,0 +1,35 @@
+body{
+    background-image:url("../images/mixed-halloween-candy.jpg");
+    background-repeat: no-repeat;
+    background-size: 120%;
+    border-block: border-box;
+   
+}
+
+#innerDiv{
+    border-block: border-box;
+    height:100%;
+    background-color: rgb(238, 115, 207);
+    margin-bottom: 20px;
+}
+
+#header{
+    border-block: border-box;
+    background-image: url("../images/frosting.jpg");
+    text-align: center;
+    margin: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 30px;
+}
+
+#submit{
+    margin-bottom: 40px;
+    margin-top: 20px;
+    width: 180px;
+    height: 50px;
+}
+
+#timer{
+    margin-top:0px;
+}
