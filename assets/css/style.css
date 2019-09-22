@@ -5,8 +5,10 @@ body{
     border-block: border-box;
 }
 
-#innerDiv{
+#innerDiv,
+#resultsPage {
     border-block: border-box;
+    border: solid 25px purple;
     height:100%;
     background-color: rgb(238, 115, 207);
     margin-bottom: 20px;
@@ -14,6 +16,7 @@ body{
 
 #header{
     border-block: border-box;
+    border: solid 15px purple;
     background-image: url("../images/frosting.jpg");
     text-align: center;
     margin: 20px;
@@ -47,6 +50,7 @@ body{
 }
 #startButton{
     background-color:rgb(238, 115, 207);
+    border: solid 10px purple;
     margin:10px;
     height: 100px;
     width: 250px;
