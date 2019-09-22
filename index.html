@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Alegreya&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -11,9 +11,16 @@
 </head>
 
 <body>   
+
 <section class="container col-12 text-center" id="header">
             <h1>Trivia Game</h1>
 </section>
+<div id="buttonholder">
+    <button type="button" id="startButton">Start</button>
+</div>
+
+<div id="gameDisplay">
+
 <div class="container col-2"></div>
 <div id="innerDiv" class="container col-8 text-center">
     <div id="timer">
@@ -23,42 +30,51 @@
     </div>
     <div id = "gameDiv">
         <section class="container text-center" id="row-question">
-            <h4>Question: <span id=questOne></span></h4></section>
-        <section class="container text-center" id="row-answer">
-                <input type="radio" name="choice" value="30"> Answer
-                <input type="radio" name="choice" value="60"> Answer
-                <input type="radio" name="choice" value="100"> Answer
-                <input type="radio" name="choice" value="unknown">Answer
+            <h4>Question: <span class="questions"></span></h4></section>
+        <section class="container text-center" >
+                <input type="radio" name="choice" value="1" id="a"> <span class="answer1"></span>
+                <input type="radio" name="choice" value="2" id="b"> <span class="answer2"></span>
+                <input type="radio" name="choice" value="3" id="c"> <span class="answer3"></span>
+                <input type="radio" name="choice" value="4" id="d"> <span class="answer4"></span>
             </section><br>
         <section class="container text-center" id="row-question">
-            <h4>Question: <span id=questOne></span></h4></section>
+            <h4>Question: <span class=""></span></h4></section>
         <section class="container text-center" id="row-answer">
-                <input type="radio" name="choice" value="30"> Answer
-                <input type="radio" name="choice" value="60"> Answer
-                <input type="radio" name="choice" value="100"> Answer
-                <input type="radio" name="choice" value="unknown">Answer
+                <input type="radio" name="" value="0"> <span class=""></span>
+                <input type="radio" name="" value="0"> <span class=""></span>
+                <input type="radio" name="" value="0"> <span class=""></span>
+                <input type="radio" name="" value="0"> <span class=""></span>
         </section><br>
         <section class="container text-center" id="row-question">
-            <h4>Question: <span id=questOne></span></h4></section>
+            <h4>Question: <span class=></span></h4></section>
         <section class="container text-center" id="row-answer">
-                <input type="radio" name="choice" value="30"> Answer
-                <input type="radio" name="choice" value="60"> Answer
-                <input type="radio" name="choice" value="100"> Answer
-                <input type="radio" name="choice" value="unknown">Answer
+                <input type="radio" name="" value="0"> <span class=""></span>
+                <input type="radio" name="" value="0"> <span class=""></span>
+                <input type="radio" name="" value="0"> <span class=""></span>
+                <input type="radio" name="" value="0"> <span class=""></span>
         </section><br>
         <section class="container text-center" id="row-question">
-                <h4>Question: <span id=questOne></span></h4></section>
+                <h4>Question: <span class=""></span></h4></section>
             <section class="container text-center" id="row-answer">
-                    <input type="radio" name="choice" value="30"> Answer
-                    <input type="radio" name="choice" value="60"> Answer
-                    <input type="radio" name="choice" value="100"> Answer
-                    <input type="radio" name="choice" value="unknown">Answer
+                <input type="radio" name="" value="0"> <span class=></span>
+                <input type="radio" name="" value="0"> <span class=></span>
+                <input type="radio" name="" value="0"> <span class=></span>
+                <input type="radio" name="" value="0"> <span class=></span>
             </section><br>
     </div>
         <input type="submit" id="submit"></button>
         <br>
 </div>   
 <div class="container col-2"></div>
+</div>
+
+<div id="resultsPage" class="container text-center">
+        <h3>Results</h3>
+        <br>
+        <h4>Correct Answers: <span id="resultsCorrect"></span></h4>
+        <h4>Incorrect Answers: <span id="resultsIncorrect"></span></h4>
+</div>
+
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="Assets/Javascript/app.js"></script>

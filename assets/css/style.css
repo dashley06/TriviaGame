@@ -3,7 +3,6 @@ body{
     background-repeat: no-repeat;
     background-size: 120%;
     border-block: border-box;
-   
 }
 
 #innerDiv{
@@ -32,4 +31,26 @@ body{
 
 #timer{
     margin-top:0px;
+}
+
+#gameDisplay,
+#resultsPage {
+    display: none;
+}
+
+#resultsPage{
+    border-block: border-box;
+    height:100%;
+    padding: 40px;
+    background-color: rgb(238, 115, 207);
+    
+}
+#startButton{
+    background-color:rgb(238, 115, 207);
+    margin:10px;
+    height: 100px;
+    width: 250px;
+}
+#buttonholder{
+    text-align: center;
 }
