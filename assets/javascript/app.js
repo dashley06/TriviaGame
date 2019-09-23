@@ -13,6 +13,7 @@ var totalCorrect=0;
 var totalIncorrect=0;
 var gameCount=0;
 
+//game questions and answers object
 var gameQuestions=[{
     question: "Which of the following candy does not contain chocolate?",
     answer: ["Twix", "Butterfinger", "Skittles", "Reese's Peanut Butter Cup"],
@@ -54,21 +55,44 @@ var gameQuestions=[{
     answer:["Valentines Day", "Halloween", "Easter", "Christmas"],
     correct:"2",
 }];
+//display gifs for incorrect and correct answers
+const funnyWin=[
+    './assets/images/'
+];
 
+const sadLoss = [
+
+];
+
+//on-click events
 //on-click event for start button to begin game
 $("#startButton").on("click", function (){
     $("#startButton").hide();
     $("#resultsPage").hide();
     $("#gameDisplay").show();
-    timer=10;
+    timer=7;
     startGame();
 });
+//on-click event to start game without refreshing page
+$("#restartButton").on("click", function (){
+    $("#startButton").show();
+    $("#resultsPage").hide();
+    $("#gameDisplay").hide();
+});
+
+//submit button for each question to advance to next question
+$("#submit").on("click", function (){
+    $("#resultsPage").show();
+    $("#gameDisplay").hide();
+    checkAnswers();
+});
+
 
 //start function to run at the beginning of each game
 function startGame (){
 //timer will call decrement function every second, timer starts at 10 seconds
     intervalID = setInterval(decrement, 1000);
-    timer=10;
+    timer=7;
     loadQuestion();
     $("#startButton").hide();
     $("#resultsPage").hide();
@@ -77,7 +101,7 @@ function startGame (){
 //select random question object each game
 function loadQuestion (){
     randomQuestion = gameQuestions[Math.floor(Math.random() * gameQuestions.length)];     
-    //appends objects into HTML 
+    //appends questions and answer objects into HTML 
     $(".questions").append(randomQuestion.question);
     $(".answer1").append(randomQuestion.answer[0]);
     $(".answer2").append(randomQuestion.answer[1]);
@@ -85,7 +109,7 @@ function loadQuestion (){
     $(".answer4").append(randomQuestion.answer[3]);
 } 
 
-//updates timer in DOM
+//updates timer display in DOM, decrement by one
 function decrement(){
     $("#gametimer").html(timer);
     timer--; 
@@ -113,23 +137,18 @@ function checkAnswers() {
             totalCorrect++
             gameCount++
             $("#resultsCorrect").text("That was correct! The correct answer is option" + " " + correctGameChoice);
-           
+           funImages();
         } else {
             totalIncorrect++
             gameCount++
             $("#resultsCorrect").text("That was incorrect. The correct answer is option" + " " + correctGameChoice);
+            sadImages();
         }
     } 
-
-$("#submit").on("click", function (){
-        $("#resultsPage").show();
-        $("#gameDisplay").hide();
-        checkAnswers();
-    });
-
+//second timer for countdown interval for each questions before advancing to next page
 function restartTimer(){
     clearInterval(intervalID);
-    resetTime = setInterval(countdown, 1000);//every second
+    resetTime = setInterval(countdown, 1000);// call function every second
     resetTimer= 3; 
 }
 
@@ -144,22 +163,44 @@ function countdown() {
        $(".answer2").empty();
        $(".answer3").empty();
        $(".answer4").empty();
-       $("[name= 'choice']").empty();
        startGame();
        gameCounter();
     }
 }
-
+//counter for each round, game stops after 5 rounds
 function gameCounter (){
     if (gameCount === 5){
      endGame();
     }
 }
+//end of game function
 function endGame(){
     $("#gameDisplay").hide();
     $("#resultsPage").show();
+    $("#restartButton").show();
     $("#resultsCorrect").text("Game Over!! You got" + " " + totalCorrect + " " + "correct and" + " " + totalIncorrect + " " + "incorrect!");
     clearInterval(restartTimer);
     clearInterval(intervalID);
 }
+
+function randomImages(images){
+    const random = Math.floor(Math.random()*images.lenth);
+    const randomImages= images[random];
+    return randomImages;
+}
+function funImages(){
+    $("#gifDisplay").html(
+        <div>
+        <p class= "preloadImages"> Good win!</p>
+        <img src="${randomImages(funnyWin)}"/>
+        </div>
+    )};
+function sadImages(){
+    $("#gifDisplay").html(
+        <div>
+        <p class= "preloadImages"> That was terrible!</p>
+        <img src="${randomImages(sadLoss)}"/>
+        </div>
+    )};
+
 });

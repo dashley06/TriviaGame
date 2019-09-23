@@ -3,6 +3,7 @@ body{
     background-repeat: no-repeat;
     background-size: 120%;
     border-block: border-box;
+    font-family: cursive, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 #innerDiv,
@@ -23,21 +24,20 @@ body{
     margin-left: 0px;
     margin-right: 0px;
     padding: 30px;
+   
 }
-
-#submit{
-    margin-bottom: 40px;
-    margin-top: 20px;
-    width: 180px;
-    height: 50px;
+h1{
+    font-weight: bold;
+    font-size:40px;
 }
-
+ 
 #timer{
     margin-top:0px;
 }
 
 #gameDisplay,
-#resultsPage {
+#resultsPage,
+#restartButton {
     display: none;
 }
 
@@ -45,16 +45,28 @@ body{
     border-block: border-box;
     height:100%;
     padding: 40px;
-    background-color: rgb(238, 115, 207);
+    background-color: rgb(248, 194, 235);
     
 }
-#startButton{
-    background-color:rgb(238, 115, 207);
+#startButton,
+#restartButton,
+#submit {
+    background-image:url("../images/frosting.jpg");
+    border-radius: 25px;
     border: solid 10px purple;
     margin:10px;
     height: 100px;
     width: 250px;
+
+    font-size:30px;
 }
 #buttonholder{
     text-align: center;
+}
+
+#gif{
+    position: relative;
+}
+#gifDisplay{
+    position:absolute;
 }
