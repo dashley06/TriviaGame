@@ -57,13 +57,12 @@ var gameQuestions=[{
 }];
 //display gifs for incorrect and correct answers
 const funnyWin=[
-    './assets/images/'
+    '.../'
 ];
 
-const sadLoss = [
+const sadLoss=[
 
 ];
-
 //on-click events
 //on-click event for start button to begin game
 $("#startButton").on("click", function (){
@@ -93,6 +92,7 @@ function startGame (){
 //timer will call decrement function every second, timer starts at 10 seconds
     intervalID = setInterval(decrement, 1000);
     timer=7;
+    clearInterval(restartTimer);
     loadQuestion();
     $("#startButton").hide();
     $("#resultsPage").hide();
@@ -121,28 +121,34 @@ function showResultPage(){
     if(timer <= -1){
     $("#gameDisplay").hide();
     $("#resultsPage").show();
+    $("#timeup").html("You ran out of time!");
+    $("#image3").hide();
     checkAnswers();
 }}
     
 //comparison of answers to check if radio button select was correct
 function checkAnswers() {
-    restartTimer();
     userInput = document.querySelector("input[name=choice]:checked").value;
     userInput= parseInt(userInput);     
-        console.log(userInput);
+       // console.log(userInput);
     correctGameChoice = randomQuestion.correct;
     correctGameChoice = parseInt(correctGameChoice);
-        console.log(correctGameChoice)
+       // console.log(correctGameChoice)
+    gameCount++
         if (userInput === correctGameChoice){
             totalCorrect++
-            gameCount++
             $("#resultsCorrect").text("That was correct! The correct answer is option" + " " + correctGameChoice);
-           funImages();
+            $("#image1").show();
+            $("#image2").hide();
+            $("#image3").hide();
+            restartTimer();
         } else {
             totalIncorrect++
-            gameCount++
             $("#resultsCorrect").text("That was incorrect. The correct answer is option" + " " + correctGameChoice);
-            sadImages();
+            $("#image1").hide();
+            $("#image2").show();
+            $("#image3").hide();
+            restartTimer();
         }
     } 
 //second timer for countdown interval for each questions before advancing to next page
@@ -155,9 +161,7 @@ function restartTimer(){
 function countdown() {
     resetTimer--; 
     if(resetTimer === 0){
-       console.log("game over", gameCount); 
-       clearInterval(restartTimer);
-       clearInterval(intervalID);
+      // console.log("game over", gameCount); 
        $(".questions").empty();
        $(".answer1").empty();
        $(".answer2").empty();
@@ -169,7 +173,7 @@ function countdown() {
 }
 //counter for each round, game stops after 5 rounds
 function gameCounter (){
-    if (gameCount === 5){
+    if (gameCount >= 5){
      endGame();
     }
 }
@@ -179,28 +183,13 @@ function endGame(){
     $("#resultsPage").show();
     $("#restartButton").show();
     $("#resultsCorrect").text("Game Over!! You got" + " " + totalCorrect + " " + "correct and" + " " + totalIncorrect + " " + "incorrect!");
+    $("#restartButton").html("Restart Game");
+    $("#image1").hide();
+    $("#image2").hide();
+    $("#image3").show();
     clearInterval(restartTimer);
     clearInterval(intervalID);
 }
 
-function randomImages(images){
-    const random = Math.floor(Math.random()*images.lenth);
-    const randomImages= images[random];
-    return randomImages;
-}
-function funImages(){
-    $("#gifDisplay").html(
-        <div>
-        <p class= "preloadImages"> Good win!</p>
-        <img src="${randomImages(funnyWin)}"/>
-        </div>
-    )};
-function sadImages(){
-    $("#gifDisplay").html(
-        <div>
-        <p class= "preloadImages"> That was terrible!</p>
-        <img src="${randomImages(sadLoss)}"/>
-        </div>
-    )};
 
 });
