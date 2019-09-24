@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 //variables
-var resetTimer=4;
+var resetTimer=0;
 var resetTime;
 var intervalID;
 var timer;
@@ -55,14 +55,6 @@ var gameQuestions=[{
     answer:["Valentines Day", "Halloween", "Easter", "Christmas"],
     correct:"2",
 }];
-//display gifs for incorrect and correct answers
-const funnyWin=[
-    '.../'
-];
-
-const sadLoss=[
-
-];
 //on-click events
 //on-click event for start button to begin game
 $("#startButton").on("click", function (){
@@ -89,10 +81,9 @@ $("#submit").on("click", function (){
 
 //start function to run at the beginning of each game
 function startGame (){
-//timer will call decrement function every second, timer starts at 10 seconds
-    intervalID = setInterval(decrement, 1000);
+    intervalID = setInterval(decrement, 1000);//timer will call decrement function every second, timer starts at 10 seconds
     timer=7;
-    clearInterval(restartTimer);
+    resetTimer=0;
     loadQuestion();
     $("#startButton").hide();
     $("#resultsPage").hide();
@@ -134,61 +125,71 @@ function checkAnswers() {
     correctGameChoice = randomQuestion.correct;
     correctGameChoice = parseInt(correctGameChoice);
        // console.log(correctGameChoice)
-    gameCount++
+    gameCount++;
         if (userInput === correctGameChoice){
-            totalCorrect++
+            totalCorrect++;
             $("#resultsCorrect").text("That was correct! The correct answer is option" + " " + correctGameChoice);
             $("#image1").show();
             $("#image2").hide();
             $("#image3").hide();
             restartTimer();
         } else {
-            totalIncorrect++
+            totalIncorrect++;
             $("#resultsCorrect").text("That was incorrect. The correct answer is option" + " " + correctGameChoice);
             $("#image1").hide();
             $("#image2").show();
             $("#image3").hide();
             restartTimer();
         }
-    } 
+    }
 //second timer for countdown interval for each questions before advancing to next page
 function restartTimer(){
     clearInterval(intervalID);
     resetTime = setInterval(countdown, 1000);// call function every second
-    resetTimer= 3; 
 }
 
 function countdown() {
-    resetTimer--; 
-    if(resetTimer === 0){
-      // console.log("game over", gameCount); 
+    resetTimer++  
+    console.log(resetTimer)
+    timerDoesntWork();
+}
+
+function timerDoesntWork (){
+    if(resetTimer === 3){
+      console.log("game over", gameCount);
        $(".questions").empty();
        $(".answer1").empty();
        $(".answer2").empty();
        $(".answer3").empty();
        $(".answer4").empty();
-       startGame();
        gameCounter();
-    }
-}
+       clearInterval(resetTime); 
+}}
 //counter for each round, game stops after 5 rounds
 function gameCounter (){
-    if (gameCount >= 5){
-     endGame();
+    if (gameCount === 5){
+    endGame();
     }
-}
+    else {
+        startGame();
+    }}
+
 //end of game function
 function endGame(){
+    clearTimeout(restartTimer);
+    clearTimeout(resetTimer);
+    clearTimeout(resetTime);
     $("#gameDisplay").hide();
     $("#resultsPage").show();
+    $("#timeup").html("")
     $("#restartButton").show();
     $("#resultsCorrect").text("Game Over!! You got" + " " + totalCorrect + " " + "correct and" + " " + totalIncorrect + " " + "incorrect!");
-    $("#restartButton").html("Restart Game");
+    $("#restartButton").text("Restart Game");
     $("#image1").hide();
     $("#image2").hide();
     $("#image3").show();
-    clearInterval(restartTimer);
-    clearInterval(intervalID);
+    return;
+    console.log("WTF");
 }
 
 
