@@ -112,6 +112,7 @@ function showResultPage(){
     if(timer <= -1){
     $("#gameDisplay").hide();
     $("#resultsPage").show();
+    $("#restartButton").hide();
     $("#timeup").html("You ran out of time!");
     $("#image3").hide();
     checkAnswers();
