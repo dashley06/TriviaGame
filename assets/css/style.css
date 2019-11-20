@@ -1,9 +1,9 @@
 body{
-    background-image:url("../images/mixed-halloween-candy.jpg");
+    background-image:url("../images/studio-room-interior-pink-color-background-with-lighting-effect-vector.jpg");
     background-repeat: no-repeat;
     background-size: 200%;
     border-block: border-box;
-    font-family: cursive, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 #innerDiv,
@@ -49,7 +49,7 @@ h1{
 #submit{
     background-image:url("../images/frosting.jpg");
     border-radius: 25px;
-    border: solid 10px purple;
+    border: solid 5px purple;
     margin:10px;
     height: 100px;
     width: 250px;

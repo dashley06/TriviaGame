@@ -5,7 +5,6 @@ var resetTimer=0;
 var resetTime;
 var intervalID;
 var timer;
-var t;
 var userInput;
 var correctGameChoice;
 var randomQuestion;
