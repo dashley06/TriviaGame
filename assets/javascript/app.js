@@ -188,7 +188,6 @@ function endGame(){
     $("#image2").hide();
     $("#image3").show();
     return;
-    console.log("WTF");
 }
 
 
