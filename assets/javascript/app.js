@@ -112,7 +112,6 @@ function showResultPage(){
     $("#gameDisplay").hide();
     $("#resultsPage").show();
     $("#restartButton").hide();
-    $("#timeup").html("You ran out of time!");
     $("#image3").hide();
     checkAnswers();
 }}
@@ -121,10 +120,10 @@ function showResultPage(){
 function checkAnswers() {
     userInput = document.querySelector("input[name=choice]:checked").value;
     userInput= parseInt(userInput);     
-       // console.log(userInput);
+   
     correctGameChoice = randomQuestion.correct;
     correctGameChoice = parseInt(correctGameChoice);
-       // console.log(correctGameChoice)
+     
     gameCount++;
         if (userInput === correctGameChoice){
             totalCorrect++;

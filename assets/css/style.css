@@ -10,17 +10,17 @@ body{
 #resultsPage {
     position: relative;
     border-block: border-box;
-    border: solid 25px purple;
+    border: solid 15px purple;
     height:100%;
-    background-color: rgb(238, 115, 207);
+    background-color: rgb(245, 159, 216);
     margin-bottom: 20px;
     padding: 40px;
 }  
 
 #header{
     border-block: border-box;
-    border: solid 15px purple;
-    background-image: url("../images/frosting.jpg");
+    border: solid 8px purple;
+    background-image: url("../images/stripes.jpg");
     text-align: center;
     margin: 20px;
     margin-left: 0px;
@@ -45,16 +45,26 @@ h1{
 }
 
 #restartButton,
-#startButton,
 #submit{
-    background-image:url("../images/frosting.jpg");
+    background-color: purple;
     border-radius: 25px;
     border: solid 5px purple;
     margin:10px;
-    height: 100px;
+    height: 60px;
     width: 250px;
     font-size:30px;
 }
+
+#startButton{
+    background-color: rgb(248, 174, 236);
+    border-radius: 25px;
+    border: solid 5px purple;
+    margin:10px;
+    height: 60px;
+    width: 250px;
+    font-size:30px;
+}
+
 .buttonholder{
     text-align: center;
 }
@@ -78,6 +88,7 @@ height:400px;
     text-align: center;
     width:500px;
     height:400px;
+    margin-top:20px;
     margin-left:50px;
     margin-right:50px;
     margin-bottom:-50px;
